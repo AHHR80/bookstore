@@ -223,6 +223,7 @@ def log_in(request):
                 user_check.save(update_fields=['last_login'])
 
                 login(request, user_check)
+                request.session['last-log-in'] = 'this is last log in '
 
                 return redirect('/home/')
 
