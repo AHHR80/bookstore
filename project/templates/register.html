@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
+    {% csrf_token %}
+    <!-- Icons font CSS-->
+
+
+    <link href="{% static 'register/vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet"
+        media="all">
+    <link href="{% static 'register/vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'register/vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'register/vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'register/css/main.css' %}" rel="stylesheet" media="all">
+
+    <style>
+        @font-face {
+            font-family: Vazir;
+            font-style: normal;
+            font-weight: normal;
+            src: url('{% static "font/fonts/Vazir.eot" %}');
+            src: url('{% static "font/fonts/Vazir.eot?#iefix" %}') format('embedded-opentype'),
+            url('{% static "font/fonts/Vazir.woff2" %}') format('woff2'),
+            url('{% static "font/fonts/Vazir.woff" %}') format('woff'),
+            url('{% static "font/fonts/Vazir.ttf" %}') format('truetype');
+        }
+
+        body {
+            font-family: Vazir;
+        }
+
+        label{
+            font-family: Vazir;
+        }
+        input{
+            font-family: Vazir;
+        }
+        input:focus{
+            background-color: #ffe399;
+            color: #44244c;
+            animation-name: amir2;
+            animation-duration: 1s;
+            animation-iteration-count: 100;
+        }
+
+        @keyframes amir2 {
+            25% {
+                border-radius: 25px;
+            }
+
+            50% {
+                border-radius: 60px;
+            }
+
+            75% {
+                border-radius: 80px;
+            }
+
+            100% {
+                border-radius: 0px;
+            }
+        }
+
+        h2{
+            font-family: Vazir;
+        }
+        button{
+            font-family: Vazir;
+            padding: 0;
+        }
+        .input-group{
+            box-shadow: 5px 5px 10px #44244c;
+            border-radius: 20px 20px 0px 0px ; 
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4" style="background-color: #fdc800;">
+                <div class="card-body">
+                    <h3 style="font-family: Vazir; color: rebeccapurple; text-align: center;">{{error }}</h3>
+                    <br>
+                    <h2 class="title">ساخت حساب</h2>
+                    {% csrf_token %}
+                    <form>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">نام</label>
+                                    <input class="input--style-4" type="text" name="_name_" value="{{name}}" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">نام خانوادگی</label>
+                                    <input class="input--style-4" type="text" name="_lastname_" value="{{lastname}}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">ایمیل</label>
+                                    <input class="input--style-4" type="email" name="_email_" value="{{email}}" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">شماره همراه</label>
+                                    <input class="input--style-4" type="text" name="_phone_" value="{{phone}}" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">پسورد</label>
+                                    <input class="input--style-4" type="password" name="_pass1_" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">تکرار پسورد</label>
+                                    <input class="input--style-4" type="password" name="_pass2_" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-t-15">
+                            {% csrf_token %}
+                            <button class="btn btn--radius-2 btn--blue" type="submit" formmethod="POST">ساخت
+                                حساب</button>
+                    </form>
+                    <a href="{% url 'authentication:login' %}"><button style="margin: auto;"
+                            class="btn btn--radius-2 btn--blue">ورود به حساب قبلی</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'register/vendor/jquery/jquery.min.js' %}"></script>
+    <!-- Vendor JS-->
+    <script src="{% static 'register/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'register/vendor/datepicker/moment.min.js' %}"></script>
+    <script src="{% static 'register/vendor/datepicker/daterangepicker.js' %}"></script>
+
+    <!-- Main JS-->
+    <script src="{% static 'register/js/global.js' %}"></script>
+
+</body>
+
+</html>
+<!-- end document-->

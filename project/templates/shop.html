@@ -1,0 +1,46 @@
+{% extends 'component/user.html' %}
+
+
+{% block main %}
+
+<h1>لیست خرید ها</h1>
+<hr style="width: 50%;">
+<h4>جمع کل: {{ price }} تومان</h4>
+<hr>
+
+<h4>تعدا کل ایتم های قرار داده شده : {{ counter }}</h4>
+<hr>
+<br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="d-flex flex-wrap col-12" style="padding: 0;">
+            {% for i in data %}
+            <div class="card mr-auto ml-auto col-lg-3" style="box-shadow: 5px 20px 19px -4px #000000;">
+                <a href="http://127.0.0.1:8888/book/{{ i.id }}/{{ i.name }}">
+                    <img src="{{ i.image.url }}" style="max-height: 300px;" class="card-img-top" alt="رفتن به کتاب {{ i.name }}">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ i.name }}</h5>
+                    <p class="card-text">{{ i.description|truncatechars:128 }}</p>
+                    <p style="text-shadow: 5px 5px 15px #000000; font-weight: bold;">{{ i.price }}</p>
+                    <a href="#" class="btn btn-warning">خرید</a>
+                    <form action="http://127.0.0.1:8888/book/shop/" method="POST">
+                        {% csrf_token %}
+                        <input type="text" style="display: none;" value="{{ i.id }}" name="id">
+                        <input type="text" style="display: none;" value="{{ i.name }}" name="name">
+                        <input type="text" style="display: none;" value="yes" name="delete">
+                        <input type="text" style="display: none;" value="{{ user.email }}" name="email">
+                        <button type="submit" class="pin btn btn-outline-danger"><i class="fa fa-trash"
+                                aria-hidden="true"></i>حذف کتاب</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock main %}

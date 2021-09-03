@@ -1,0 +1,347 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'font/font-awesome/css/font-awesome.min.css' %}">
+
+    <title>book</title>
+    <style>
+        @font-face {
+            font-family: Vazir;
+            font-style: normal;
+            font-weight: normal;
+            src: url('{% static "font/fonts/Vazir.eot" %}');
+            src: url('{% static "font/fonts/Vazir.eot?#iefix" %}') format('embedded-opentype'),
+            url('{% static "font/fonts/Vazir.woff2" %}') format('woff2'),
+            url('{% static "font/fonts/Vazir.woff" %}') format('woff'),
+            url('{% static "font/fonts/Vazir.ttf" %}') format('truetype');
+        }
+
+        body {
+            background: #F0F3F5;
+            font-family: Vazir;
+            transition: 1s;
+        }
+
+        .card-body {
+            position: absolute;
+            top: 0;
+            display: none;
+            transition: 1s;
+            padding: 2px;
+            border-radius: 15px;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.5);
+            width: 100%;
+            height: 100%;
+        }
+
+        .card:hover .card-body {
+            display: block;
+            transition: 1s;
+        }
+
+        .card:hover {
+            box-shadow: 5px 5px 50px 5px #fdc800;
+            width: 110%;
+            margin-right: -5%;
+        }
+
+        .card {
+            max-width: 450px;
+            border: 5px solid #fdc800;
+            text-align: center;
+            transition: 1s;
+            border-radius: 10px;
+            padding: 0;
+            background-color: transparent;
+            margin-top: 10px;
+            box-shadow: 1px 5px 18px 4px #000000;
+        }
+
+        .card2 {
+            max-width: 450px;
+            border: 5px solid #fdc800;
+            text-align: center;
+            transition: 1s;
+            border-radius: 10px;
+            padding: 0;
+            background-color: transparent;
+            margin-top: 10px;
+            box-shadow: 1px 5px 18px 4px #000000;
+        }
+
+        .card img {
+            position: relative;
+            width: 100%;
+        }
+
+        img {
+            max-width: 250px;
+            border-radius: 5px;
+        }
+
+        
+
+        @media screen and (min-width: 200px) {
+            .card-columns {
+                column-count: 3;
+                column-fill: auto;
+                transition: 1s;
+            }
+
+            .card-body-text {
+                font-size: 5px;
+                padding: 1px;
+            }
+
+            .card-body-text-titile {
+                font-size: 7px;
+            }
+
+            .tab {
+                display: none;
+            }
+
+            #book-name {
+                font-size: 15px;
+            }
+
+            .book-detail {
+                font-size: 7px;
+            }
+
+        }
+
+        @media screen and (min-width: 576px) {
+            .card-columns {
+                column-count: 4;
+                column-fill: auto;
+                transition: 1s;
+            }
+
+            #book-name {
+                font-size: 18px;
+            }
+
+            .book-detail {
+                font-size: 13px;
+            }
+
+        }
+
+        @media screen and (min-width: 768) {
+            .book-detail {
+                font-size: 15px;
+            }
+
+        }
+
+        @media screen and (min-width: 929px) {
+            .card-columns {
+                column-count: 6;
+                column-fill: auto;
+                transition: 1s;
+            }
+
+            .tab {
+                display: block;
+            }
+
+            #book-name {
+                font-size: 30px;
+            }
+
+            .book-detail {
+                font-size: 15px;
+            }
+
+        }
+
+        .amir_table2 {
+            display: none;
+            transition: 1s;
+            border-radius: 5px;
+        }
+
+        .amir_table {
+            color: #44244c;
+            transition: 1s;
+            width: 100%;
+
+        }
+
+        .amir_table :hover {
+            background-color: #44244c;
+            transition: 1s;
+        }
+
+        .amir_table:hover .amir_table2 {
+            display: block;
+            border-radius: 5px;
+            transition: 0.5s;
+        }
+
+        .image_show_main {
+            box-shadow: 5px 5px 50px 5px #000000;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .dropdown .dropdown-menu {
+            display: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            width: 100%;
+            text-align: right;
+        }
+
+        #book-name {
+            text-align: right;
+            color: #44244c;
+        }
+
+        .book-detail {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    {% include 'component/nav2.html' %}
+
+    <div class="alert alert-warning" role="alert">
+        {% for i in data %}
+
+            {% if forloop.counter > 1 %}
+
+                {% else %}
+                    {% if 'ارزان ترین' in request.path %}
+                        <h1 id="book-name">کتاب های {{ i.grouping }}-ارزان ترین ها</h1>
+                    {% endif %}
+                    {% if 'تازه ها' in request.path %}
+                        <h1 id="book-name">کتاب های {{ i.grouping }}-تازه ها</h1>
+                    {% endif %}
+                    {% if 'پربحث ترین' in request.path %}
+                        <h1 id="book-name">کتاب های {{ i.grouping }}-پربحث ترین ها</h1>
+                    {% endif %}
+                    {% if 'پرفروش ترین' in request.path %}
+                        <h1 id="book-name">کتاب های {{ i.grouping }}-پرفروش ترین ها</h1>
+                    {% endif %}
+
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+    <div class="container-fluid" style="margin-top: 50px;">
+        <div class="row">
+            
+            {% include 'component/table3-list.html' %}
+
+            <div class="col-lg-9 col-12 mr-auto ml-auto overflow-auto image_show_main"
+                style="background-color: #fdc800; width: 99%; max-height: 520px; min-height: 500px;">
+                
+                
+                {% if list != False %}
+                <div style="background-color: rebeccapurple; border-radius: 5px; position: sticky; top: 0; z-index: 2;">
+                    <div class="dropdown" style="width: 100%; border-radius: 5px;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" style="width: 100%; border-radius: 5px;" aria-expanded="false">
+                            چینش بر اساس
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            {% for i in data %}
+
+                                {% if forloop.counter > 1 %}
+                                
+                                {% else %}
+                                    <li><a class="dropdown-item"
+                                            href="http://127.0.0.1:8888/book/list/{{ i.grouping }}/تازه‌ها/">تازه‌ها</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="http://127.0.0.1:8888/book/list/{{ i.grouping }}/ارزان ترین/">ارزان ترین</a>
+                                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="http://127.0.0.1:8888/book/list/{{ i.grouping }}/پربحث ترین/">پربحث ترین</a>
+                                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="http://127.0.0.1:8888/book/list/{{ i.grouping }}/پرفروش ترین/">پرفروش ترین</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+                    
+                
+                <div class="card-columns ">
+
+
+                    {% for i in data %}
+                    <a href="http://127.0.0.1:8888/book/{{ i.id }}/{{ i.name }}">
+
+                        <div class="card card2">
+                            <img src="{{ i.image.url }}" alt="">
+                            <div class="card-body">
+                                <p class="book-detail" style="color: green;">نام کتاب: {{ i.name }}</p>
+                                <p class="book-detail" style="color: blue;">نویسنده: {{ i.author }}</p>
+                                <p class="book-detail" style="color: red;">مترجم : {{ i.tranlator }}</p>
+                                <p class="book-detail" style="color: orange;">ناشر: {{ i.publisher }}</p>
+                                <p class="book-detail" style="color: greenyellow;">قیمت {{ i.price }} تومان</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <dir class="row mr-auto ml-auto" style="padding: 0;">
+            <div class="col-12" style="background-color: #fdc800; height: 500px; border-radius: 5px;">f
+            </div>
+        </dir>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+[2021-07-07 05:45:18 +0000] [98] [DEBUG] Current configuration:
+  config: /home/project/gunicorn.conf.py
+  bind: ['0.0.0.0:8000']
+  backlog: 1024
+  workers: 2
+  worker_class: gevent
+  threads: 2
+  worker_connections: 1024
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 50
+  graceful_timeout: 60
+  keepalive: 15
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: ['/home/project/gunicorn.conf.py']
+  spew: False
+  check_config: False
+  preload_app: True
+  sendfile: None
+  reuse_port: False
+  chdir: /home/project
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: None
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/project/error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: book.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fc39bd97ee0>
+  on_reload: <function OnReload.on_reload at 0x7fc39bda6040>
+  when_ready: <function WhenReady.when_ready at 0x7fc39bda6160>
+  pre_fork: <function Prefork.pre_fork at 0x7fc39bda6280>
+  post_fork: <function Postfork.post_fork at 0x7fc39bda63a0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fc39bda64c0>
+  worker_int: <function WorkerInt.worker_int at 0x7fc39bda65e0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fc39bda6700>
+  pre_exec: <function PreExec.pre_exec at 0x7fc39bda6820>
+  pre_request: <function PreRequest.pre_request at 0x7fc39bda6940>
+  post_request: <function PostRequest.post_request at 0x7fc39bda69d0>
+  child_exit: <function ChildExit.child_exit at 0x7fc39bda6af0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fc39bda6c10>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fc39bda6d30>
+  on_exit: <function OnExit.on_exit at 0x7fc39bda6e50>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2021-07-07 05:45:19 +0000] [98] [INFO] Starting gunicorn 20.0.4
+[2021-07-07 05:45:19 +0000] [98] [DEBUG] Arbiter booted
+[2021-07-07 05:45:19 +0000] [98] [INFO] Listening at: http://0.0.0.0:8000 (98)
+[2021-07-07 05:45:19 +0000] [98] [INFO] Using worker: gevent
+[2021-07-07 05:45:19 +0000] [100] [INFO] Booting worker with pid: 100
+[2021-07-07 05:45:19 +0000] [101] [INFO] Booting worker with pid: 101
+[2021-07-07 05:45:19 +0000] [98] [DEBUG] 2 workers
+[2021-07-07 05:45:30 +0000] [100] [DEBUG] GET /stream/
+[2021-07-07 05:45:34 +0000] [100] [DEBUG] Closing connection. 
+[2021-07-07 05:45:36 +0000] [98] [INFO] Handling signal: int
+[2021-07-07 05:45:37 +0000] [101] [INFO] Worker exiting (pid: 101)
+[2021-07-07 05:45:37 +0000] [100] [INFO] Worker exiting (pid: 100)
+[2021-07-07 05:45:37 +0000] [98] [INFO] Shutting down: Master
+[2021-07-07 05:47:41 +0000] [103] [DEBUG] Current configuration:
+  config: /home/project/gunicorn.conf.py
+  bind: ['0.0.0.0:8000']
+  backlog: 1024
+  workers: 2
+  worker_class: gevent
+  threads: 2
+  worker_connections: 1024
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 50
+  graceful_timeout: 60
+  keepalive: 15
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: ['/home/project/gunicorn.conf.py']
+  spew: False
+  check_config: False
+  preload_app: True
+  sendfile: None
+  reuse_port: False
+  chdir: /home/project
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: None
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/project/error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: book.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f2aa0e9aee0>
+  on_reload: <function OnReload.on_reload at 0x7f2aa0ea9040>
+  when_ready: <function WhenReady.when_ready at 0x7f2aa0ea9160>
+  pre_fork: <function Prefork.pre_fork at 0x7f2aa0ea9280>
+  post_fork: <function Postfork.post_fork at 0x7f2aa0ea93a0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f2aa0ea94c0>
+  worker_int: <function WorkerInt.worker_int at 0x7f2aa0ea95e0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f2aa0ea9700>
+  pre_exec: <function PreExec.pre_exec at 0x7f2aa0ea9820>
+  pre_request: <function PreRequest.pre_request at 0x7f2aa0ea9940>
+  post_request: <function PostRequest.post_request at 0x7f2aa0ea99d0>
+  child_exit: <function ChildExit.child_exit at 0x7f2aa0ea9af0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f2aa0ea9c10>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f2aa0ea9d30>
+  on_exit: <function OnExit.on_exit at 0x7f2aa0ea9e50>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2021-07-07 05:47:42 +0000] [103] [INFO] Starting gunicorn 20.0.4
+[2021-07-07 05:47:42 +0000] [103] [DEBUG] Arbiter booted
+[2021-07-07 05:47:42 +0000] [103] [INFO] Listening at: http://0.0.0.0:8000 (103)
+[2021-07-07 05:47:42 +0000] [103] [INFO] Using worker: gevent
+[2021-07-07 05:47:42 +0000] [105] [INFO] Booting worker with pid: 105
+[2021-07-07 05:47:42 +0000] [106] [INFO] Booting worker with pid: 106
+[2021-07-07 05:47:42 +0000] [103] [DEBUG] 2 workers
+[2021-07-07 05:48:46 +0000] [105] [DEBUG] GET /stream/
+[2021-07-07 05:48:46 +0000] [106] [DEBUG] GET /stream/
+[2021-07-07 05:48:47 +0000] [105] [DEBUG] Closing connection. 
+[2021-07-07 05:48:51 +0000] [106] [DEBUG] GET /stream/
+[2021-07-07 05:48:52 +0000] [106] [DEBUG] GET /stream/
+[2021-07-07 05:48:54 +0000] [106] [DEBUG] Closing connection. 
+[2021-07-07 05:49:04 +0000] [106] [DEBUG] GET /admin
+[2021-07-07 05:49:04 +0000] [106] [DEBUG] GET /admin/
+[2021-07-07 05:49:07 +0000] [106] [DEBUG] GET /static/admin/css/base.css
+[2021-07-07 05:49:07 +0000] [106] [DEBUG] GET /static/admin/css/nav_sidebar.css
+[2021-07-07 05:49:08 +0000] [105] [DEBUG] GET /static/admin/css/responsive.css
+[2021-07-07 05:49:08 +0000] [105] [DEBUG] GET /static/admin/css/rtl.css
+[2021-07-07 05:49:08 +0000] [105] [DEBUG] GET /static/admin/css/dashboard.css
+[2021-07-07 05:49:08 +0000] [105] [DEBUG] GET /static/admin/css/responsive_rtl.css
+[2021-07-07 05:49:08 +0000] [105] [DEBUG] GET /static/admin/js/nav_sidebar.js
+[2021-07-07 05:49:14 +0000] [105] [DEBUG] Closing connection. 
+[2021-07-07 05:49:14 +0000] [106] [DEBUG] Closing connection. 
+[2021-07-07 05:49:14 +0000] [105] [DEBUG] Closing connection. 
+[2021-07-07 05:49:14 +0000] [105] [DEBUG] Closing connection. 
+[2021-07-07 05:49:14 +0000] [105] [DEBUG] Closing connection. 
+[2021-07-07 05:49:21 +0000] [103] [INFO] Handling signal: int
+[2021-07-07 05:49:22 +0000] [106] [INFO] Worker exiting (pid: 106)
+[2021-07-07 05:49:22 +0000] [105] [INFO] Worker exiting (pid: 105)
+[2021-07-07 05:49:23 +0000] [103] [INFO] Shutting down: Master

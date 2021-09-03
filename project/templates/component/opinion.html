@@ -1,0 +1,28 @@
+<div class="stars col-sm-6 col-12 mr-auto ml-auto">
+    <form>
+        <div class="mr-auto ml-auto" >
+            <input class="star star-5" id="star-5" type="radio" name="star5" />
+            <label class="star star-5" for="star-5"></label>
+            <input class="star star-4" id="star-4" type="radio" name="star4" />
+            <label class="star star-4" for="star-4"></label>
+            <input class="star star-3" id="star-3" type="radio" name="star3" />
+            <label class="star star-3" for="star-3"></label>
+            <input class="star star-2" id="star-2" type="radio" name="star2" />
+            <label class="star star-2" for="star-2"></label>
+            <input class="star star-1" id="star-1" type="radio" name="star1" />
+            <label class="star star-1" for="star-1"></label>
+        </div>
+
+        <br>
+        <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="نظر خود را وارد کنید" rows="3"
+                name="opi">{{ ii }}</textarea>
+        </div>
+        {% csrf_token %}
+        <div class="mr-auto ml-auto">
+            <input class="btn btn-primary mr-auto ml-auto" style="margin: auto; position: relative;" type="submit"
+                value="ارسال" formmethod="POST">
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,37 @@
+{% extends 'component/user.html' %}
+
+
+{% block main %}
+
+<div class="alert alert-warning" role="alert">
+    <h1>کتاب های نشان شده</h1>
+</div>
+
+{% for i in data  %}
+<div class="card mb-3" style="max-width: 540px; float: {% cycle 'right' 'left' %}; direction: {% cycle 'rtl' 'ltr' %};">
+    <div class="row no-gutters">
+        <div class="col-md-4 col-5">
+            <a href="http://127.0.0.1:8888/book/{{ i.id }}/{{ i.name }}">
+                <img src="{{ i.image.url }}" class="card-img" alt="رفتن به کتاب {{ i.name }}">
+            </a>
+        </div>
+        <div class="col-md-8 col-7">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.name }}</h5>
+                <p class="card-text">{{ i.description|truncatechars:128 }}</p>
+                <a href="#"><button type="button" class="btn btn-outline-warning">مشاهده کتاب</button></a>
+                <form action="http://127.0.0.1:8888/book/pin/" method="POST">
+                    {% csrf_token %}
+                    <input type="text" style="display: none;" value="{{ i.id }}" name="id">
+                    <input type="text" style="display: none;" value="{{ i.name }}" name="name">
+                    <input type="text" style="display: none;" value="yes" name="delete">
+                    <input type="text" style="display: none;" value="{{ user.email }}" name="email">
+                    <button type="submit" class="pin btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i>حذف کتاب</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock main %}

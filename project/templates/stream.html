@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Drlight | Straem</title>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.plyr.io/3.5.2/plyr.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.plyr.io/3.5.2/demo.css" />
+</head>
+
+<body>
+    <div class="grid">
+        <header>
+            <h1>Plyr.io</h1>
+            <h2>Amir.h.h.R</h2>
+            <p><a href="https://ln.ghm.me/b123"></a></p>
+        </header>
+        <main>
+            <div id="container">
+                <video controls crossorigin playsinline autoplay id="player">
+                </video>
+            </div>
+        </main>
+    </div>
+    <!-- Polyfills -->
+    <script type="text/javascript"
+        src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL,Math.trunc"
+        crossorigin="anonymous"></script>
+    <!-- plyr.is -->
+    <script type="text/javascript" src="https://cdn.plyr.io/3.5.2/plyr.js"></script>
+    <!-- hls.js -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+        const source = 'http://localhost:1010/hls/amir.m3u8';
+        const player = new Plyr('#player');
+        var video = document.getElementById('player');
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(source);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.play();
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = source;
+            video.addEventListener('loadedmetadata', function () {
+                video.play();
+            });
+        }
+    </script>
+</body>
+
+</html>

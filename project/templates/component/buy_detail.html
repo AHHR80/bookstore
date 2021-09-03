@@ -1,0 +1,32 @@
+{% extends 'component/user.html' %}
+
+
+{% block main %}
+<h1>لیست خرید ها</h1>
+<hr style="width: 50%;">
+<h4>جمع کل: {{ price }} تومان</h4>
+<hr>
+
+<h4>تعدا کل ایتم های خریداری شده : {{ counter }}</h4>
+<hr>
+<br>
+<table class="table table-striped" style="margin-top: 20px;">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">تاریخ</th>
+            <th scope="col">قیمت</th>
+            <th scope="col">نام کتاب</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for i in user %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.data_buy }}</td>
+            <td>{{ i.price }}</td>
+            <td>{{ i.book_name }}</td>
+        </tr>
+        {% endfor %}
+{% endblock main %}

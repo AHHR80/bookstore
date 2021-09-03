@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>check</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/check.css' %}">
+    <style>
+        @font-face {
+            font-family: Vazir;
+            font-style: normal;
+            font-weight: normal;
+            src: url('{% static "font/fonts/Vazir.eot" %}');
+            src: url('{% static "font/fonts/Vazir.eot?#iefix" %}') format('embedded-opentype'),
+            url('{% static "font/fonts/Vazir.woff2" %}') format('woff2'),
+            url('{% static "font/fonts/Vazir.woff" %}') format('woff'),
+            url('{% static "font/fonts/Vazir.ttf" %}') format('truetype');
+        }
+
+        body {
+            font-family: Vazir;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12" style="padding: 0;">
+                <div class="d-flex flex-wrap">
+                    <h2 style="color: blue; text-align: center" dir="rtl">{{ error }}</h2>
+                    <div class="col-12" id="main_">
+                        <img src="{% static 'image/Newsletter.png' %}" id="image_">
+                        <div class="col-12" id="main__">
+                            <form>
+                                {% csrf_token %}
+                                <input type="password" name="__pass__"
+                                    placeholder="enter pass how sending to your email now">
+                                <div class="col-5 mr-auto ml-auto" id="main___">
+                                    <button type="submit" formmethod="post">Check</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="help" style="font-family: Vazir;">
+                        <h1 dir="rtl">راهنمایی:</h1>
+                        <p dir="rtl">رمزی که برای شما درون ایمیل شما ارسال شده است را وارد کنید اگر اشتباه وارد شود باید
+                            کل مرحله ثبت
+                            نام را از اول طی کنید</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

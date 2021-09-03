@@ -1,0 +1,14 @@
+
+<br>
+<div class="container" style="direction: rtl;">
+    <div class="row">
+        <div class="col-12" >
+            <div class="d-flex flex-row justify-content-start flex-nowrap overflow-auto col-12 mr-auto ml-auto amir">
+                
+                {% for i in ii %}
+                    <div class="col-md-2 col-sm-3  col-6 amirhossein" style="background-color: blueviolet; margin-top: 10px; margin-bottom: 10px; margin-left: 5px; margin-right: 5px;"><a href="http://127.0.0.1:8888/book/{{i.id}}/{{i.name}}/"><img src="{{ i.image.url }}"></a></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

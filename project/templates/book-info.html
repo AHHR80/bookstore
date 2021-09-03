@@ -1,0 +1,1073 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'font/font-awesome/css/font-awesome.min.css' %}">
+    <title>book</title>
+    <style>
+        @font-face {
+            font-family: Vazir;
+            font-style: normal;
+            font-weight: normal;
+            src: url('{% static "font/fonts/Vazir.eot" %}');
+            src: url('{% static "font/fonts/Vazir.eot?#iefix" %}') format('embedded-opentype'),
+            url('{% static "font/fonts/Vazir.woff2" %}') format('woff2'),
+            url('{% static "font/fonts/Vazir.woff" %}') format('woff'),
+            url('{% static "font/fonts/Vazir.ttf" %}') format('truetype');
+        }
+
+        body {
+            font-family: 'Vazir', Arial, sans-serif;
+            font-weight: normal;
+            background-color: #F0F3F5;
+            transition: 1s;
+        }
+
+        .main_ {
+            border-radius: 20px;
+            box-shadow: 1px 5px 15px 5px rgb(141, 140, 140);
+            height: auto;
+            direction: rtl;
+            text-align: right;
+            padding: 20PX;
+            color: #fdc800;
+            background-image: url({{data.image.url}});
+            backdrop-filter: blur(1px);
+        }
+
+        @media screen and (min-width: 200px) {
+            .side-bar {
+                height: auto;
+                position: sticky;
+                display: block;
+                top: 10px;
+                margin-bottom: 20px;
+            }
+
+            .list-group-item {
+                margin-right: -20px;
+            }
+
+            .main_ {
+                font-weight: 100px;
+                font-size: 12px;
+
+            }
+
+            .image-cover img {
+                max-height: 100px;
+                position: absolute;
+                box-shadow: 1px 1px 35px 5px #fdc800;
+
+            }
+
+            .info {
+                padding: 10px;
+            }
+
+            .book-shower-main {
+                max-height: 150;
+                min-height: 120;
+            }
+
+            .book-shower {
+                margin: 5px;
+            }
+
+            .more_info {
+                margin: 10px;
+                border-radius: 20px;
+                font-size: 10px;
+            }
+
+            .book-shower-info {
+                padding: 20px;
+                text-align: center;
+                font-size: 12px;
+            }
+
+            label.star {
+                padding: 10px;
+                font-size: 20px;
+                color: #444;
+                transition: all .2s;
+            }
+        }
+
+        @media screen and (min-width: 320px) {
+            .image-cover img {
+                max-height: 200px;
+                box-shadow: 1px 1px 35px 5px #fdc800;
+            }
+
+            .book-shower-info {
+                padding: 20px;
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (min-width: 968px) {
+            .side-bar {
+                height: auto;
+                position: sticky;
+                display: block;
+                top: 10px;
+                margin-bottom: 20px;
+            }
+
+            .list-group-item {
+                margin-right: -40px;
+            }
+
+            .image-cover img {
+                padding: 5px;
+                margin-right: 5px;
+                margin-top: -10px;
+                max-height: 300px;
+                box-shadow: 5px 5px 35px 15px #fdc800;
+            }
+
+            .info {
+                padding: 30px;
+            }
+
+            .more_info {
+                margin: 50px;
+                font-size: 15px;
+            }
+
+            .main_ {
+
+                font-size: 15px;
+            }
+
+            .book-shower-main {
+                max-height: 350;
+                min-height: 320;
+            }
+
+            .book-shower {
+                margin: 20px;
+            }
+
+            .book-shower-info {
+                padding: 20px;
+                text-align: center;
+                font-size: 12px;
+            }
+
+            label.star {
+                padding: 10px;
+                font-size: 30px;
+                color: #444;
+                transition: all .2s;
+            }
+
+        }
+
+
+        .amir_table2 {
+            display: none;
+            transition: 1s;
+            border-radius: 5px;
+        }
+
+        .amir_table {
+            background-color: #fdc800;
+            color: #44244c;
+            width: 100%;
+            transition: 1s;
+        }
+
+        .amir_table :hover {
+            background-color: #44244c;
+            transition: 1s;
+        }
+
+        .amir_table:hover .amir_table2 {
+            display: block;
+            border-radius: 5px;
+            transition: 0.5s;
+        }
+
+        .d-flex ul {
+            width: 100%;
+        }
+
+        .image-cover {
+            top: 0;
+            float: left;
+            position: relative;
+            padding: 0;
+            display: block;
+        }
+
+        .image-cover img {
+            position: absolute;
+            width: 100%;
+            border-radius: 10px;
+            animation-name: amir2;
+            animation-duration: 12s;
+            animation-iteration-count: 100;
+        }
+
+        @keyframes amir2 {
+            25% {
+                border-radius: 25px;
+            }
+
+            50% {
+                border-radius: 60px;
+            }
+
+            75% {
+                border-radius: 80px;
+            }
+
+            100% {
+                border-radius: 25px;
+            }
+        }
+
+        .info {
+            background-color: rgba(68, 36, 76, 0.7);
+            border-radius: 20px;
+        }
+
+        .info-text {
+            padding: 0;
+            bottom: -20px;
+        }
+
+        hr {
+            width: 70%;
+            background-color: #fdc800;
+        }
+
+        .example {
+            padding: 0;
+        }
+
+        .example button {
+            width: 100%;
+        }
+
+        .nav-inner {
+            position: sticky;
+            top: 55px;
+            text-align: center;
+            padding: 0;
+            z-index: 2;
+        }
+
+        .nav-inner2 {
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: 1s;
+            animation-name: amir3;
+            animation-duration: 12s;
+            animation-iteration-count: 100;
+            padding: 0;
+            margin-top: 2px;
+            cursor: pointer;
+            border: 0;
+            background-color: #44244c;
+            color: #fdc800;
+        }
+
+        .nav-inner2:hover {
+            transition: 1s;
+            box-shadow: 5px 5px 10px #fdc800;
+            background-color: #ffe399;
+        }
+
+        @keyframes amir3 {
+            25% {
+                margin-right: 0;
+            }
+
+            50% {
+                margin-right: 8%;
+            }
+        }
+
+        .more_info {
+            background-color: rgba(253, 200, 0, 0.9);
+            text-align: right;
+            direction: rtl;
+            width: 100%;
+            min-height: 200px;
+
+        }
+
+        .pin {
+            background-color: none;
+            border: 0;
+        }
+
+        .pin:hover {
+            color: #ffe399;
+        }
+
+        .test {
+            display: block;
+        }
+
+        .book-shower {
+            max-height: 250px;
+        }
+
+        .book-shower img {
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            animation-name: amir2;
+            animation-duration: 12s;
+            animation-iteration-count: 100;
+            box-shadow: 5px 5px 25px #927799;
+            position: relative;
+            padding: 5px;
+            transition: 1s;
+        }
+
+        .book-shower img:hover {
+            box-shadow: 5px 5px 25px #381d3f;
+            transition: 0.5s;
+        }
+
+        .book-shower:hover .book-shower-info {
+            display: block;
+            transition: 1s;
+        }
+
+        .book-shower-title {
+            font-weight: bolder;
+            color: #44244c;
+            width: 100%;
+            border: 0;
+        }
+
+        .book-shower-main::-webkit-scrollbar {
+            width: 0.5em;
+        }
+
+        .book-shower-main::-webkit-scrollbar-track {
+            border-radius: 0px 0px 30px 30px;
+            box-shadow: inset 0 0 6px transparent;
+        }
+
+        .book-shower-main::-webkit-scrollbar-thumb {
+            border-radius: 0px 0px 30px 30px;
+            background-color: #44244c;
+            border: 0;
+        }
+
+        .book-shower-info {
+            display: none;
+            position: absolute;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            width: 81%;
+            height: 80%;
+            margin-top: 20px;
+            margin-left: -2px;
+            border-radius: 50px;
+            transition: 1s;
+            padding: 5px;
+            color: #fdc800;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: #44244c;
+            font-size: 25px;
+            border: none;
+            cursor: pointer;
+            display: block;
+
+        }
+
+        .dropdown {
+            position: relative;
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: relative;
+            background-color: transparent;
+            z-index: 1;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .dropbtn2 {
+            background-color: transparent;
+            color: #44244c;
+            font-size: 25px;
+            border: none;
+            cursor: pointer;
+            display: block;
+
+        }
+
+        .dropdown2 {
+            position: relative;
+            display: block;
+        }
+
+        .dropdown-content2 {
+            display: none;
+            position: relative;
+            background-color: transparent;
+            z-index: 1;
+        }
+
+        .show2 {
+            display: block;
+        }
+
+        .dropbtn3 {
+            background-color: transparent;
+            color: black;
+
+            border: none;
+            cursor: pointer;
+            width: 175.5px;
+            height: 38px;
+        }
+
+        .dropdown3 {
+            position: relative;
+            display: block;
+
+        }
+
+        .dropdown-content3 {
+            display: none;
+            position: relative;
+            background-color: transparent;
+            z-index: 1;
+        }
+
+        .show3 {
+            display: block;
+        }
+
+        a {
+            color: #44244c;
+        }
+
+        div.stars {
+            width: 100%;
+            display: block;
+        }
+
+        input.star {
+            display: none;
+        }
+
+
+
+        input.star:checked~label.star:before {
+            content: '\2605';
+            color: #FD4;
+            transition: all .25s;
+        }
+
+        input.star-5:checked~label.star:before {
+            color: #FE7;
+            text-shadow: 0 0 20px #952;
+        }
+
+        input.star-1:checked~label.star:before {
+            color: #F62;
+        }
+
+        label.star:hover {
+            transform: rotate(-15deg) scale(1.3);
+        }
+
+        label.star:before {
+            content: '\2605';
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% include 'component/nav2.html' with x=counter %}
+
+    {% if message != None %}
+    <div class="container">
+        <div class="row">
+            <div class="d-flex col-12 flex-wrap" style="background-color: #F62; margin-top: 10px; border-radius: 10px;">
+                {{ message }}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+    <div class="container-fluid" style="width: 98%; padding-top: 20px;">
+        <div class="row">
+            <div class="col-12  side-bar">
+                <div class="d-flex flex-row mr-auto ml-auto"
+                    style=" font-family:Vazir;font-weight: bold;padding: 0; width: 100%;">
+                    <ul class="list-group" style=" text-align: right; float: right;">
+                        <li class="list-group-item amir_table">ادبیات<span style="margin-right: 10px;"><i
+                                    class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                            <ul>
+                                <li class="amir_table2"><a href="#">ادبیات پارسی</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">ادبیات جهان</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">نگارش</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">شعر پارسی</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">شعر خارجی</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">طنز</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">فرهنگ لغت</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">زندگی نامه و خاطرات</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">سفرنامه</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">فیلمنامه</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">نمایشنامه</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">نقد و برسی</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#"></a></li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item amir_table">داستان و رمان<span style="margin-right: 10px;"><i
+                                    class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                            <ul>
+                                <li class="amir_table2"><a href="#">داستان و رمان ایرانی</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="http://127.0.0.1:8888/book/list/رمان های خارجی/پربحث ترین/">داستان و رمان خارجی</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item amir_table">روانشناسی<span style="margin-right: 10px;"><i
+                                    class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                            <ul>
+                                <li class="amir_table2"><a href="#">موفقیت</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">خانواده و روابط</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">خودسازی</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">ارتباطات</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">کودک و نوجوان</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">بزرگسال</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item amir_table">اقتصاد<span style="margin-right: 10px;"><i
+                                    class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                            <ul>
+                                <li class="amir_table2"><a href="#">بازاریابی و فروش</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">مدیریت و رهبری</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">کارآفرینی</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">حسابداری</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">سرمایه گذاری و بورس</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">مدیریت پروژه</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">امور مالی و بیمه</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">مدیریت سازمان</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">اقتصاد</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">گزارش‌های آماری</a></li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item amir_table">کامپیوتر<span style="margin-right: 10px;"><i
+                                    class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                            <ul>
+                                <li class="amir_table2"><a href="#">آموزش کامپیوتر و اینترنت</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">سیستم عامل</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">برنامه نویسی</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">تجارت الکترونیک</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">هک و امنیت</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">آموزش شبکه</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">سخت افزار</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">طراحی وب سایت</a></li>
+                            </ul>
+                            <ul>
+                                <li class="amir_table2"><a href="#">گرافیک کامپیوتری و انیمیشن</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-12  main_" style="background-color: #fff;">
+                <h1 style="font-weight: bolder; color: #44244c; text-align: center; text-shadow: 5px 5px 5px #fdc800;">
+                    دانلود و خرید {{ data.name }}</h1>
+                <hr>
+                <div class="col-12" style="padding: 0;">
+                    <div class="d-flex flex-wrap">
+                        <div class="col-12 info">
+                            <div class="col-sm-2 col-4 image-cover "><img src="{{ data.image.url }}"></div>
+                            <a href="http://127.0.0.1:8888/book/list/{{ data.grouping }}/پربحث ترین/"
+                                style="color: #fdc800;">
+                                <p>زیر مجموعه : {{ data.grouping }}</p>
+                            </a>
+                            <p>نام کتاب: {{ data.name }}</p>
+                            <p>نام نویسنده : {{ data.author }}</p>
+                            <p>مترجم : {{ data.tranlator }}</p>
+                            <p>ناشر : {{ data.publisher }}</p>
+                            <p>قیمت : {{ data.price }} تومان</p>
+                            <p>تعداد دفعات خرید شده : {{ data.num_sold }}</p>
+                            <!--ایدی کتاب به همراه نام کاربری فرد به این ادرس ارسال شود تا درون نشان شده ها ذخیره شود -->
+
+                            {% if authentication != False and is_pin == False %}
+                            <form action="http://127.0.0.1:8888/book/pin/" method="POST">
+                                {% csrf_token %}
+                                <input type="text" style="display: none;" value="{{ data.id }}" name="id">
+                                <input type="text" style="display: none;" value="{{ data.name }}" name="name">
+                                <input type="text" style="display: none;" value="{{ user.email }}" name="email">
+                                <button type="submit" class="pin"
+                                    style="background-color: transparent; color: #fdc800;"><i
+                                        class="fa fa-thumb-tack pin" aria-hidden="true"
+                                        style="float: right; font-size: 20px; top: 0;"></i></button>
+                            </form>
+                            {% endif %}
+
+                            <div class="col-6 mr-auto ml-auto" style="text-align: center;">
+                                <p>از : {{ data.counter_star }} رای</p>
+                                <span> {{ data.average }} </span>
+
+                                {% include 'component/star.html' with x=data.average %}
+
+                            </div>
+
+                            {% if is_sold == False %}
+                            
+                            {% if  is_in_shop != 0  %}
+                            <div class="col-sm-6 col-12 mr-auto ml-auto example"><a href="{% url 'shop' %}"
+                                style="color: #44244c;"><button type="button" class="btn btn-outline-warning"
+                                    style="margin-top: 8px;">رفتن به سبد خرید</button></a></div>
+                            <div class="col-sm-6 col-12 mr-auto ml-auto example"><a href="#"
+                                style="color: #44244c;"><button type="button" class="btn btn-outline-warning"
+                                    style="margin-top: 8px;">نسخه نمونه</button></a></div>
+                            {% else %}
+                            <div class="col-sm-6 col-12 mr-auto ml-auto info-text">
+                                <form action="http://127.0.0.1:8888/book/shop/" method="POST">
+                                    {% csrf_token %}
+                                    <input type="text" style="display: none;" value="{{ data.id }}" name="id">
+                                    <input type="text" style="display: none;" value="{{ data.name }}" name="name">
+                                    <input type="text" style="display: none;" value="{{ user.email }}" name="email">
+                                    <button type="submit" class="btn btn-warning btn-lg btn-block">
+                                        <h6>افزودن به سبد خرید</h6>
+                                    </button>
+                                </form>
+                            </div>
+                            <br>
+                            <div class="col-sm-6 col-12 mr-auto ml-auto example"><a href="#"
+                                    style="color: #44244c;"><button type="button" class="btn btn-outline-warning"
+                                        style="margin-top: 8px;">نسخه نمونه</button></a></div>
+                            {% endif %}
+                                
+                            {% else %}
+                            <div class="col-sm-6 col-12 mr-auto ml-auto example"><a href="#"
+                                    style="color: #44244c;"><button type="button" class="btn btn-outline-warning"
+                                        style="margin-top: 8px;">مشاهده کتاب</button></a></div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <!--show the book-->
+        <br>
+        <div class="row" style="direction: rtl; text-align: center; background-color: transparent;">
+            <div class="col-lg-10 col-12 mr-auto ml-auto"
+                style="padding: 0%; background-color: #fdc800; border-radius: 25px;">
+                <a href="#"><button class="book-shower-title btn btn-outline-warning">
+                        <h4>کتاب های مشابه</h4>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                    </button></a>
+                <div class="d-flex overflow-auto book-shower-main" style="padding: 0%; ">
+
+
+                    {% for i in similer %}
+
+                    <div class="col-md-3 col-sm-4 col-lg-2 col-6 mr-auto ml-auto book-shower"><a
+                            href="http://127.0.0.1:8888/book/{{ i.id }}/{{ i.name }}"><img
+                                src="{{ i.image.url }}" /></a></div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <!--end show the book-->
+
+        <!--more-info-->
+        <div class="row" style="margin-top: 20px; background-image: url('{{ data.image.url }}');">
+            <div class="col-12" style="padding: 0;">
+                <div class="d-flex flex-row container-fluid"
+                    style="padding: 0px;  border-radius: 50px;">
+                    <div class="more_info" style="padding: 6px;">
+                        <!--nav-->
+                        <div class="col-12 nav-inner">
+                            <div class="d-flex flex-wrap">
+                                <a href="#introduction" class="col-sm-2 col-3 nav-inner2 introduction">معرفی</a>
+                                <a href="#contents" class="col-sm-2 col-3 nav-inner2 contents">فهرست</a>
+                                <a href="#specifications" class="col-sm-2 col-3 nav-inner2 specifications">مشخصات</a>
+                                <a href="#comments" class="col-sm-2 col-3 nav-inner2 comments">نظرات</a>
+                            </div>
+                        </div>
+                        <!--end-nav-->
+                        <br>
+                        <h2 id="introduction" class="test2">معرفی کتاب {{ data.name }}</h2>
+                        <div class="test">
+                            <p>
+                                <h6>
+                                    {{ data.description }}
+                                </h6>
+                            </p>
+                        </div>
+                        <hr id="contents">
+                        <br>
+                        <div class="list col-12 d-flex overflow-auto">
+                            <div class="dropdown" style="width: 100%;">
+                                <button onclick="myFunction()" class="dropbtn">فهرست<i class="fa fa-chevron-down"
+                                        aria-hidden="true"></i></button>
+                                <div id="myDropdown" class="dropdown-content flex-wrap">
+                                    <pre>
+                                        {{ data.contents }}
+                                    </pre>
+                                </div>
+                            </div>
+
+                            <script>
+                                /* When the user clicks on the button, 
+                            toggle between hiding and showing the dropdown content */
+                                function myFunction() {
+                                    document.getElementById("myDropdown").classList.toggle("show");
+                                }
+
+                                // Close the dropdown if the user clicks outside of it
+                                window.onclick = function (event) {
+                                    if (!event.target.matches('.dropbtn')) {
+                                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                                        var i;
+                                        for (i = 0; i < dropdowns.length; i++) {
+                                            var openDropdown = dropdowns[i];
+                                            if (openDropdown.classList.contains('show')) {
+                                                openDropdown.classList.remove('show');
+                                            }
+                                        }
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <!--end content-->
+                        <br>
+                        <hr id="specifications">
+                        <!--start specifications-->
+                        <div class="test22 col-12">
+                            <div class="dropdown2" style="width: 100%;">
+                                <button onclick="myFunction2()" class="dropbtn2">مشخصات <i class="fa fa-chevron-down"
+                                        aria-hidden="true"></i></button>
+                                <div id="myDropdown2" class="dropdown-content2 ">
+                                    <table class="table" style="text-align: center;">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="col"> نام کتاب </th>
+                                                <td>{{data.name}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>نویسنده</th>
+                                                <td scope="col">{{ data.author }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>مترجم</th>
+                                                <td scope="col">{{ data.tranlator }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>ناشر چاپی</th>
+                                                <td scope="col">{{data.publisher}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>سال انتشار</th>
+                                                <td scope="col">{{data.year}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>فرمت کتاب</th>
+                                                <td scope="col">{{ data.format_book}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>تعداد صفحات </th>
+                                                <td scope="col">{{ data.number_of_pages }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>زبان</th>
+                                                <td scope="col">{{data.language}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>شابک</th>
+                                                <td scope="col">{{ data.ISBN }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <script>
+                                /* When the user clicks on the button, 
+                                toggle between hiding and showing the dropdown content */
+                                function myFunction2() {
+                                    document.getElementById("myDropdown2").classList.toggle("show2");
+                                }
+
+                                // Close the dropdown if the user clicks outside of it
+                                window.onclick = function (event) {
+                                    if (!event.target.matches('.dropbtn2')) {
+                                        var dropdowns = document.getElementsByClassName("dropdown-content2");
+                                        var i;
+                                        for (i = 0; i < dropdowns.length; i++) {
+                                            var openDropdown = dropdowns[i];
+                                            if (openDropdown.classList.contains('show2')) {
+                                                openDropdown.classList.remove('show2');
+                                            }
+                                        }
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <!--end specifications-->
+                        <br>
+                        <hr id="comments">
+                        <h3>نظرات</h3>
+                        <!--start openion-->
+                        <div class="col-12" id="accordion" style="text-align: right;">
+
+                            {% for iii in idea %}
+
+                            {% if forloop.counter == 1 %}
+
+                            <div class="card">
+                                <div class="card-header" id="headingOne"
+                                    style="background-color: wheat; padding: 0; height: 30px;">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="padding: 0; top: 0; width: 100%;"
+                                            data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            {{ iii.user }}
+
+                                            {% include 'component/star.html' with x=iii.star %}
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        {{ iii.opinion }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+
+                            <div class="card">
+                                <div class="card-header" id="headingTwo"
+                                    style="background-color: wheat; padding: 0; height: 30px;">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" style="padding: 0; top: 0; width: 100%;"
+                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                            {{ iii.user }}
+
+                                            {% include 'component/star.html' with x=iii.star %}
+
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        {{ iii.opinion }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+                        <!--end openion-->
+
+                        {% if is_sold == True %}
+
+                        {% if is_idea == False %}
+                        {% include 'component/opinion.html' with ii=test %}
+                        {% else %}
+                        <br>
+                        <div class="test22 col-12">
+                            <div class="dropdown3" style="width: 100%;"">
+                                <div class=" edit mr-auto ml-auto">
+                                <button type="button" onclick="myFunction3()"
+                                    class="dropbtn3 btn btn-outline-success ml-auto mr-auto">نظر خود را ویرایش
+                                    کنید</button>
+                            </div>
+                            <div id="myDropdown3" style="padding: 20px; text-align: center;" class="dropdown-content3">
+                                {% include 'component/opinion.html' with ii=is_idea %}
+                            </div>
+                        </div>
+
+                        <script>
+                            /* When the user clicks on the button, 
+                                toggle between hiding and showing the dropdown content */
+                            function myFunction3() {
+                                document.getElementById("myDropdown3").classList.toggle("show3");
+                            }
+
+                            // Close the dropdown if the user clicks outside of it
+                            window.onclick = function (event) {
+                                if (!event.target.matches('.dropbtn3')) {
+                                    var dropdowns = document.getElementsByClassName("dropdown-content3");
+                                    var i;
+                                    for (i = 0; i < dropdowns.length; i++) {
+                                        var openDropdown = dropdowns[i];
+
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+
+                    {% endif %}
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end for info-->
+    <br>
+    <div class="row" style="direction: rtl; text-align: center; background-color: transparent;">
+        <div class="col-lg-10 col-12 mr-auto ml-auto"
+            style="padding: 0%; background-color: #fdc800; border-radius: 25px;">
+            <a href="#"><button class="book-shower-title btn btn-outline-warning">
+                    <h4>کتابهای این نویسنده</h4>
+                    <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                </button></a>
+            <div class="d-flex overflow-auto book-shower-main" style="padding: 0%; ">
+
+                {% for i4 in similer_author  %}
+                <div class="col-md-3 col-sm-4 col-lg-2 col-6 mr-auto ml-auto book-shower"><a
+                        href="http://127.0.0.1:8888/book/{{i4.id}}/{{i4.name}}/"><img src="{{ i4.image.url }}" /></a>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!--end show the book-->
+    <br>
+    <div class="row" style="direction: rtl; text-align: center; background-color: transparent;">
+        <div class="col-lg-10 col-12 mr-auto ml-auto"
+            style="padding: 0%; background-color: #fdc800; border-radius: 25px;">
+            <a href="#"><button class="book-shower-title btn btn-outline-warning">
+                    <h4>کتابهای این انتشارات</h4>
+                    <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                </button></a>
+            <div class="d-flex overflow-auto book-shower-main" style="padding: 0%; ">
+
+                {% for i5 in similer_publisher %}
+
+                <div class="col-md-3 col-sm-4 col-lg-2 col-6 mr-auto ml-auto book-shower"><a
+                        href="http://127.0.0.1:8888/book/{{i5.id}}/{{i5.name}}/"><img src="{{ i5.image.url }}" /></a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <dir class="row" style="padding: 0;">
+        <div class="col-12" style="background-color: #fdc800; height: 500px;">f</div>
+    </dir>
+    </div>
+</body>
+
+</html>

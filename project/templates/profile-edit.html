@@ -1,0 +1,90 @@
+{% extends 'component/user.html' %}
+
+
+{% block main %}
+
+<div class="alert alert-warning" role="alert">
+    <h1 style="color: green;">{{ message }}</h1>
+</div>
+
+<ul class="list-group" style="padding: 0;">
+    <li class="list-group-item list1">نام و نام خانوادگی<i class="fa fa-chevron-down" aria-hidden="true"></i>
+        <ul class="list-body">
+            <section class="get-in-touch">
+                <form class="contact-form row" action="{% url 'profile' %}">
+                    {% csrf_token %}
+                    <div class="form-field col-lg-6">
+                        <input id="name" class="input-text js-input" value="{{ data.name }}" name="name" type="text" required>
+                        <label class="label" for="name">نام</label>
+                    </div>
+                    <div class="form-field col-lg-6">
+                        <input id="name" class="input-text js-input" value="{{ data.lastname }}" name="lastname" type="text" required>
+                        <label class="label" for="name">نام خانوادگی</label>
+                    </div>
+                    <div class="form-field col-lg-12">
+                        <input class="submit-btn" type="submit" value="ویرایش" formmethod="POST">
+                    </div>
+                </form>
+            </section>
+        </ul>
+    </li>
+    <li class="list-group-item list1">ایمیل<i class="fa fa-chevron-down" aria-hidden="true"></i>
+        <ul class="list-body">
+            <section class="get-in-touch mr-auto ml-auto">
+                <form class="contact-form row" action="{% url 'profile' %}">
+                    {% csrf_token %}
+                    <div class="form-field col-lg-6 mr-auto ml-auto">
+                        <input id="name" style="text-align: left;" class="input-text js-input" name="email" value="{{ data.email }}"
+                            type="text" required>
+                        <label class="label" for="name">ایمیل</label>
+                    </div>
+                    <div class="form-field col-lg-6 mr-auto ml-auto">
+                        <input class="submit-btn" type="submit" value="ویرایش" formmethod="POST">
+                    </div>
+                </form>
+            </section>
+        </ul>
+    </li>
+    <li class="list-group-item list1">شماره<i class="fa fa-chevron-down" aria-hidden="true"></i>
+        <ul class="list-body">
+            <section class="get-in-touch mr-auto ml-auto">
+                <form class="contact-form row">
+                    {% csrf_token %}
+                    <div class="form-field col-lg-6 mr-auto ml-auto">
+                        <input id="name" class="input-text js-input" value="{{ data.phone }}" name="phone" type="text" required>
+                        <label class="label" for="name">شماره</label>
+                    </div>
+                    <div class="form-field col-lg-6 mr-auto ml-auto">
+                        <input class="submit-btn" type="submit" value="ویرایش" formmethod="POST">
+                    </div>
+                </form>
+            </section>
+        </ul>
+    </li>
+    <li class="list-group-item list1">پسورد<i class="fa fa-chevron-down" aria-hidden="true"></i>
+        <ul class="list-body">
+            <section class="get-in-touch mr-auto ml-auto">
+                <form class="contact-form row">
+                    {% csrf_token %}
+                    <div class="form-field col-lg-6 mr-auto ml-auto">
+                        <input id="name" class="input-text js-input" type="text" name="pass1" required>
+                        <label class="label" for="name">پسورد جدید</label>
+                    </div>
+                    <div class="form-field col-lg-6 mr-auto ml-auto">
+                        <input id="name" class="input-text js-input" type="text" name="pass-now" required>
+                        <label class="label" for="name">پسورد فعلی</label>
+                    </div>
+                    <div class="form-field col-lg-6 mr-auto ml-auto">
+                        <input id="name" class="input-text js-input" type="text" name="pass2" required>
+                        <label class="label" for="name">تکرار پسورد جدید</label>
+                    </div>
+                    <div class="form-field col-lg-6 mr-auto ml-auto">
+                        <input class="submit-btn" type="submit" value="ویرایش" formmethod="POST">
+                    </div>
+                </form>
+            </section>
+        </ul>
+    </li>
+</ul>
+
+{% endblock main %}

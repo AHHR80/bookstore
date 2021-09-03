@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  gunicorn:
+    tty: true
+    build: .
+    container_name: nginx-me
+    ports: 
+      - "9090:8080"
+
+    networks: 
+      - nginx-net
+    
+    volumes:
+      - F:\mycode\gunicorn\project:/home/project
+    
+    stdin_open: true
+
+networks: 
+  nginx-net:
+    driver: bridge

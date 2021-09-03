@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light nav"
+  style="background-color: rgba(0, 0, 0, 0.5); border-radius: 0px 0px 10px 10px;">
+  <a class="navbar-brand" href="#">Sevi</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav" style="padding: 0;">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}" style="color: #fdc800;"><i class="fa fa-home"
+            aria-hidden="true" style="font-size: 25px;"></i>خانه <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #fdc800;"><i class="fa fa-list" aria-hidden="true" style="font-size: 25px;"></i> دسته بندی</a>
+      </li>
+
+      {% if request.user.is_authenticated == True %}
+      <div
+        style="background-image: url('{{ user.profile_image.url }}'); color: blue; width: 50px; height: 50px; border-radius: 50%; background-repeat: round;">
+      </div>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color: #fdc800; text-transform: uppercase;" href="#"
+          id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ user.name }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="text-align: right; direction: ltr;">
+          <a class="dropdown-item" href="{% url 'profile' %}">ویرایش پروفایل <i class="fa fa-user-md"
+              aria-hidden="true"></i></a>
+          <a class="dropdown-item" href="{% url 'list' %}">اطلاعات خرید <i class="fa fa-credit-card-alt"
+              aria-hidden="true"></i></a>
+          <a class="dropdown-item" href="{% url 'my-book' %}">کتابخانه من <i class="fa fa-book"
+              aria-hidden="true"></i></a>
+          <a class="dropdown-item" href="{% url 'pin' %}">کتاب های نشان شده <i class="fa fa-bookmark-o"
+              aria-hidden="true"></i></a>
+          <a class="dropdown-item" href="{% url 'shop' %}">
+            <span class="fa-stack">
+              <!-- The icon that will wrap the number -->
+              <span class="fa fa-circle-o fa-stack-2x" style="color: #fdc800;"></span>
+              <!-- a strong element with the custom content, in this case a number -->
+              <strong class="fa-stack-1x" style="color: blue;">
+                {{ x }}
+              </strong>
+            </span>
+            سبد خرید <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'authentication:logout' %}"> خروج از حساب <i class="fa fa-sign-out"
+              aria-hidden="true"></i></a>
+        </div>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'authentication:login' %}" style="color: #fdc800;"><i class="fa fa-sign-in"
+            aria-hidden="true"></i>ورود</a>
+      </li>
+      {% endif %}
+
+
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0 mr-auto" action="{% url 'search' %}">
+      <input class="form-control mr-sm-2" type="search" style="border: 0; margin-left: 5px; font-size: smaller;"
+        placeholder="نام کتاب نام نویسنده نام انتشارات و..." aria-label="Search" name="search">
+      {% csrf_token %}
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formmethod="POST"><i class="fa fa-search"
+          aria-hidden="true"></i></button>
+    </form>
+
+  </div>
+</nav>

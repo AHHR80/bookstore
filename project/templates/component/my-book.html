@@ -1,0 +1,37 @@
+{% extends 'component/user.html' %}
+
+
+{% block main %}
+<div class="alert alert-warning" role="alert">
+    <h1>کتاب های خرید شده</h1>
+</div>
+
+{% for i in data %}
+
+{% for ii in data2 %}
+    {% if i.id == ii.book_id %}
+    <div class="card mb-3"
+    style="max-width: 540px; float: {% cycle 'right' 'left' %}; direction: {% cycle 'rtl' 'ltr' %};">
+    <div class="row no-gutters">
+        <div class="col-md-4 col-5">
+                    <a href="http://127.0.0.1:8888/book/{{ i.id }}/{{ i.name }}">
+                        <img src="{{ i.image.url }}" class="card-img" alt="...">
+                    </a>
+                </div>
+                <div class="col-md-8 col-7">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.name }}</h5>
+                        <p class="card-text">{{ i.description|truncatechars:128 }}</p>
+                        <a href="#"><button type="button" class="btn btn-outline-warning">مشاهده کتاب</button></a>
+                        <p class="card-text"><small class="text-muted">{{ ii.data_buy }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endfor %}
+    
+{% endfor %}
+
+{% endblock main %}
