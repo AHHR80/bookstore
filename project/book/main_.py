@@ -11,6 +11,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth import authenticate
 
+# from test import test
+
 passlist = []
 passlist2 = []
 check_limit = [('host', 0, 0, 0)]
