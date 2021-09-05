@@ -11,7 +11,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth import authenticate
 
-# from test import test
+# iam modify code from github
 
 passlist = []
 passlist2 = []
